@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="none" role="img" aria-label="Debrix">
+  <!-- Debrix mark: timeline spine + nested waterfall spans + live pulse -->
+  <rect width="512" height="512" rx="112" fill="#0F1419"/>
+  <!-- Timeline spine -->
+  <rect x="142" y="118" width="32" height="276" rx="16" fill="#3A556C"/>
+  <!-- Waterfall spans -->
+  <rect x="196" y="140" width="210" height="52" rx="26" fill="#3D9CF0"/>
+  <rect x="196" y="230" width="158" height="52" rx="26" fill="#2B7BC4"/>
+  <rect x="196" y="320" width="112" height="52" rx="26" fill="#215A8F"/>
+  <!-- Live pulse on active (top) span -->
+  <circle cx="374" cy="166" r="20" fill="#3DD68C"/>
+</svg>
