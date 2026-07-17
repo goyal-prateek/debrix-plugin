@@ -9,7 +9,7 @@ description: >-
 
 Debrix is a **local-first AI agent debugger**. The desktop app must be running
 (defaults: OTLP `:17418`, MCP `http://127.0.0.1:17419/mcp` from
-`packages/ports.json` — use the URLs shown in Debrix if ports changed).
+Debrix desktop defaults — use the URLs shown in Debrix if ports changed).
 
 ## When to use
 

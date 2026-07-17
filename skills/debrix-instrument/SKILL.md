@@ -10,7 +10,7 @@ description: >-
 # Instrument with Debrix
 
 Debrix is a **local-first AI agent debugger**. Spans go OTLP/HTTP →
-`http://127.0.0.1:17418` (defaults in `packages/ports.json`; use the URL from
+`http://127.0.0.1:17418` (defaults in Debrix desktop defaults; use the URL from
 the Debrix app if ports were changed). **Debrix desktop must be running** or
 nothing appears in the UI.
 
