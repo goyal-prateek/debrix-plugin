@@ -1,0 +1,33 @@
+{
+  "name": "debrix",
+  "version": "0.1.0",
+  "description": "Local AI agent debugger for Codex — MCP tools + debrix-debug / debrix-instrument skills. Requires Debrix desktop running (MCP http://127.0.0.1:17419/mcp).",
+  "author": {
+    "name": "Debrix"
+  },
+  "homepage": "https://github.com/goyal-prateek/debrix-plugin",
+  "keywords": [
+    "debrix",
+    "agent",
+    "debugger",
+    "tracing",
+    "mcp",
+    "otel"
+  ],
+  "skills": "./skills/",
+  "mcpServers": "./.mcp.json",
+  "interface": {
+    "displayName": "Debrix",
+    "shortDescription": "Local AI agent debugger — traces, failures, prompts",
+    "longDescription": "Connect Codex to the Debrix desktop app to list traces, inspect failed runs, read span messages, and query the local SQLite store. Keep Debrix running so MCP on http://127.0.0.1:17419/mcp stays available.",
+    "developerName": "Debrix",
+    "category": "Developer Tools",
+    "capabilities": ["Read"],
+    "defaultPrompt": [
+      "Read the latest failed Debrix trace and explain the failure",
+      "List recent Debrix traces for my agent",
+      "Find error spans in the last hour"
+    ],
+    "brandColor": "#E8E4DC"
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "name": "debrix-plugins",
+  "owner": {
+    "name": "Debrix"
+  },
+  "plugins": [
+    {
+      "name": "debrix",
+      "source": "./",
+      "description": "Local AI agent debugger — MCP + debrix-debug / debrix-instrument skills. Debrix desktop must be running on :17419."
+    }
+  ]
+}
