@@ -194,5 +194,7 @@ if __name__ == "__main__":
 ## 6. Verify
 
 1. Run the instrumented script with Debrix desktop open.
-2. Open Debrix → Observe waterfall, or use MCP `list_traces` / `get_trace`.
+2. Open Debrix → Observe waterfall, or use MCP (`get_status`, `list_traces` /
+   `get_trace`, `get_span_messages`). Use `set_capture_policy` if messages are
+   missing on the next run.
 3. Confirm LLM spans show messages via `get_span_messages` (MCP) or the UI.
