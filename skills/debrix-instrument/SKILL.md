@@ -77,7 +77,10 @@ Sync and async decorators are supported.
 ### Tool calls — `trace_tool`
 
 Sets kind `tool` and `debrix.tool.name`. **Decorator** records
-`debrix.replay.input` / `debrix.replay.output` (JSON; skips `self`/`cls`).
+`debrix.replay.input` / `debrix.replay.output` / `debrix.replay.sequence_index`
+(JSON I/O; skips `self`/`cls`) for Deterministic Replay and Tool Mocker.
+Both mocks and Mode A replay resolve through `POST /mocks/resolve` — replayed
+spans set `debrix.replayed=true` (not `debrix.mocked`).
 Context-manager form does **not** auto-capture I/O.
 
 ```python
