@@ -15,9 +15,12 @@ Source: [goyal-prateek/debrix-plugin](https://github.com/goyal-prateek/debrix-pl
 mcp.json                 # Cursor
 .mcp.json                # Claude / Codex (http type)
 skills/
-├── debrix-debug/        # inspect local traces via MCP
+├── debrix-debug/        # inspect traces + mocks / capture / replay via MCP
 └── debrix-instrument/   # pip install + SDK instrumentation
 ```
+
+MCP covers Observe (traces, spans, SQL), Tool Mocks, capture policy, mark failed,
+Deterministic Replay, and status — see `skills/debrix-debug`.
 
 ## Cursor
 
