@@ -1,0 +1,19 @@
+{
+  "name": "debrix",
+  "version": "0.1.0",
+  "description": "Local AI agent debugger for Claude Code — MCP tools + debrix-debug / debrix-instrument skills. Requires Debrix desktop running (MCP http://127.0.0.1:17419/mcp).",
+  "author": {
+    "name": "Debrix"
+  },
+  "homepage": "https://github.com/goyal-prateek/debrix-plugin",
+  "keywords": [
+    "debrix",
+    "agent",
+    "debugger",
+    "tracing",
+    "mcp",
+    "otel"
+  ],
+  "skills": "./skills/",
+  "mcpServers": "./mcp.json"
+}

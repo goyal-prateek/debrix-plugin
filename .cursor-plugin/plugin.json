@@ -1,0 +1,22 @@
+{
+  "name": "debrix",
+  "displayName": "Debrix",
+  "description": "Local AI agent debugger \u2014 MCP tools + debrix-debug / debrix-instrument skills for Cursor. Requires Debrix desktop (MCP http://127.0.0.1:17419/mcp).",
+  "version": "0.1.0",
+  "author": {
+    "name": "Debrix"
+  },
+  "homepage": "https://github.com/goyal-prateek/debrix-plugin",
+  "license": "MIT",
+  "keywords": [
+    "debrix",
+    "agent",
+    "debugger",
+    "tracing",
+    "mcp",
+    "otel"
+  ],
+  "skills": "./skills/",
+  "mcpServers": "./mcp.json",
+  "logo": "assets/logotype.png"
+}
