@@ -40,6 +40,7 @@ Use `get_trace_link` to focus the Debrix UI on a trace.
 | Agent name | `debrix.agent.name` / `agent_name` on traces & `records` |
 | Span kind | `debrix.span.kind`: agent, llm, tool, mcp, memory, evaluation, human, custom |
 | Errors | OTel status ERROR and/or Debrix "Mark failed" |
+| Mocked tools | `debrix.mocked=true` — Tool Mocker rule hit (not the real implementation) |
 | Messages | Prefer `get_span_messages` (blob payloads); don't invent prompts |
 
 ## Diagnosis → patch
