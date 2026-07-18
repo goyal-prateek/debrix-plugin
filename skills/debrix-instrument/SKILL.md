@@ -79,9 +79,13 @@ Sync and async decorators are supported.
 Sets kind `tool` and `debrix.tool.name`. **Decorator** records
 `debrix.replay.input` / `debrix.replay.output` / `debrix.replay.sequence_index`
 (JSON I/O; skips `self`/`cls`) for Deterministic Replay and Tool Mocker.
-Both mocks and Mode A replay resolve through `POST /mocks/resolve` — replayed
-spans set `debrix.replayed=true` (not `debrix.mocked`).
+Both mocks and replay resolve through `POST /mocks/resolve` — stubbed
+spans set `debrix.stub` to `mock` or `replay` (omit when live).
 Context-manager form does **not** auto-capture I/O.
+
+For **Replay Mode B** (LLM stub), wrap chat calls with `debrix.llm.complete`
+(same resolve path, `kind=llm`) instead of calling the provider directly.
+The Observe Replay dialog can pin a subset of historical LLM calls.
 
 ```python
 from debrix import trace_tool
