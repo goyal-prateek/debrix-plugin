@@ -55,7 +55,9 @@ Public imports: `configure`, `force_flush`, `trace_agent`, `trace_tool`,
 
 ### Agent boundary — `trace_agent`
 
-Sets span kind `agent` and `debrix.agent.name`. No I/O capture.
+Sets span kind `agent` and `debrix.agent.name`. Decorators automatically record
+bound function arguments, including defaults, on `debrix.agent.arguments`.
+Agent return values are not captured.
 
 ```python
 from debrix import trace_agent
@@ -68,11 +70,12 @@ def run(query: str) -> str:
 def run_agent(query: str) -> str:
     ...
 
-with trace_agent("planner") as span:
+with trace_agent("planner", arguments={"query": "inspect"}) as span:
     ...
 ```
 
-Sync and async decorators are supported.
+Sync and async decorators are supported. Context-managed agents cannot infer
+function arguments, so pass a mapping explicitly when needed.
 
 ### Tool calls — `trace_tool`
 
@@ -120,9 +123,11 @@ with trace_span("complete", kind=SpanKind.LLM) as span:
 On exception, instrumented spans get OTel `ERROR` + `debrix.error.summary`
 (≤200 chars).
 
-### Message / response capture (opt-in)
+### Full local message / response capture
 
-Decorators alone do **not** capture prompts. Call on a `DebrixSpan`:
+Decorators alone do **not** capture prompts. Once these methods are called,
+Debrix stores the complete payload locally and keeps a bounded preview on the
+span for fast inspection:
 
 | Method | Notes |
 | ------ | ----- |
@@ -134,13 +139,12 @@ Decorators alone do **not** capture prompts. Call on a `DebrixSpan`:
 Bad `role` → `ValueError`. Nested `trace_*` calls propagate via OpenTelemetry
 context.
 
-### Capture modes (env)
+### Capture limits (env)
 
-Not kwargs on `configure()` — set via env (or Debrix app settings):
+Not kwargs on `configure()` — set via env:
 
 | Env | Values | Effect |
 | --- | ------ | ------ |
-| `DEBRIX_CAPTURE_MESSAGES` | `full` (default) \| `preview` \| `off` | Full bodies vs preview-only vs skip |
 | `DEBRIX_MAX_PAYLOAD_BYTES` | default `209715200` | Over-cap → capture skipped |
 | `DEBRIX_PREVIEW_CHARS` | default `4096` | Preview size budget |
 
@@ -195,6 +199,5 @@ if __name__ == "__main__":
 
 1. Run the instrumented script with Debrix desktop open.
 2. Open Debrix → Observe waterfall, or use MCP (`get_status`, `list_traces` /
-   `get_trace`, `get_span_messages`). Use `set_capture_policy` if messages are
-   missing on the next run.
+   `get_trace`, `get_span_messages`).
 3. Confirm LLM spans show messages via `get_span_messages` (MCP) or the UI.
