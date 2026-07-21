@@ -3,7 +3,7 @@ name: debrix-debug
 description: >-
   Debug Python AI agents with Debrix local traces via MCP. Use when an agent
   failed, a tool misbehaved, or the user asks what the last Debrix run did —
-  including marking failures, configuring capture, Tool Mocks, and Deterministic
+  including marking failures, Tool Mocks, and Deterministic
   Replay from the IDE.
 ---
 
@@ -18,7 +18,6 @@ shown in Debrix if ports changed).
 - Agent run failed or behaved incorrectly
 - Need prompts / tool I/O from the last local run
 - Set up Tool Mocks or Deterministic Replay for the next local run
-- Adjust capture policy so the next run records messages
 - User mentions Debrix, traces, waterfall, mocks, replay, or "what just broke?"
 
 ## Preferred tool order
@@ -35,11 +34,6 @@ Use `find_spans` when hunting by span name, kind (`agent`/`llm`/`tool`/…), or 
 Use `get_trace_link` to focus the Debrix UI on a trace.
 Use `mark_trace_failed` when OTel status is OK but the outcome is wrong (so later
 `get_latest_failed_trace` finds it).
-
-### Capture (before re-running)
-
-- `get_settings` / `set_capture_policy` with `full` | `preview` | `off`
-- Applies to **next** agent runs. Env `DEBRIX_CAPTURE_MESSAGES` overrides when set.
 
 ### Tool Mocks (chaos / edge cases)
 
@@ -86,6 +80,6 @@ For `tools_and_llm`, optional `pinned_llm_span_ids` selects which LLM calls to s
 
 Ground every claim in tool output (trace id, span name, message excerpt, error).
 Suggest a concrete prompt or code change the user can apply in the IDE.
-You **can** change local Debrix control state via MCP (mocks, capture, mark failed,
+You **can** change local Debrix control state via MCP (mocks, mark failed,
 replay). Say what you changed. Do not claim you edited the user's agent source
 unless you did so in the IDE.
